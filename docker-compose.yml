@@ -3,9 +3,15 @@ version: '3.9'
 services: 
   smart-brain-api:
     container_name: backend
+    #use this image from docker hub
     # image: node:14.15.3
+    #build using our root directory Dockerfile
     build: ./
+    #command we want to run
     command: npm start
     working_dir: /usr/src/smart-brain-api
     ports:
       - "3000:3000"
+    #allow access to host pc's file systems
+    volumes:
+      - ./:/usr/src/smart-brain-api

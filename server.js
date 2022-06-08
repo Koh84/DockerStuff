@@ -19,6 +19,7 @@ const db = knex({
 });
 
 const app = express();
+console.log('check...');
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
