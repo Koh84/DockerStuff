@@ -1,0 +1,19 @@
+npm i
+node -v
+touch Dockerfile
+    FROM node:14.15.3
+    CMD ["/bin/bash"]
+docker build -t superawesomecontainer .
+docker run -it superawesomecontainer
+exit
+
+//to run docker in the background
+docker run -it -d superawesomecontainer
+
+//docker commands
+//list running containter
+docker ps
+//get back into a running container
+docker exec -it 46cd9cbe3b34 bash
+//stop and exit a running container
+docker stop 46cd9cbe3b34
