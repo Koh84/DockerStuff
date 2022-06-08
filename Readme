@@ -17,3 +17,10 @@ docker ps
 docker exec -it 46cd9cbe3b34 bash
 //stop and exit a running container
 docker stop 46cd9cbe3b34
+
+//if you have a server running inside the docker container at port 3000
+//you can't load the server in your main computer until you do port forwarding
+//forward the port inside the docker image to the main pc
+//this is done using the -p param saying, 
+//port inside docker image that you want to forward: port on main pc you want it to forward to
+docker run -it -p 3000:3000 superawesomecontainer
