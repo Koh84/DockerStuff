@@ -24,3 +24,12 @@ docker stop 46cd9cbe3b34
 //this is done using the -p param saying, 
 //port inside docker image that you want to forward: port on main pc you want it to forward to
 docker run -it -p 3000:3000 superawesomecontainer
+
+
+//use docker compose to orchestrate all our docker container
+docker-compose build
+docker-compose run smart-brain-api
+docker-compose run --service-ports smart-brain-api
+docker-compose down
+docker-compose up --build
+
