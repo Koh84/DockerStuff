@@ -28,8 +28,15 @@ docker run -it -p 3000:3000 superawesomecontainer
 
 //use docker compose to orchestrate all our docker container
 docker-compose build
+//run container with smart-brain-api service
 docker-compose run smart-brain-api
+//run container with smart-brain-api service and expose ports
 docker-compose run --service-ports smart-brain-api
+//take down any running container
 docker-compose down
+//build and run container
 docker-compose up --build
-
+//run the container in the background
+docker-compose up -d
+//enter the background running container
+docker-compose exec smart-brain-api bash
