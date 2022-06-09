@@ -13,7 +13,7 @@ services:
     command: npm start
     working_dir: /usr/src/smart-brain-api
     environment:
-      POSTGRES_USER: sally
+      POSTGRES_URI: psql postgres://sally:secret@db:5432/smart-brain-docker
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: smart-brain-docker
       POSTGRES_HOST: db
