@@ -1,6 +1,8 @@
 version: '3.9'
 
 services: 
+
+  # Backend API
   smart-brain-api:
     container_name: backend
     #use this image from docker hub
@@ -10,8 +12,28 @@ services:
     #command we want to run
     command: npm start
     working_dir: /usr/src/smart-brain-api
+    environment:
+      POSTGRES_USER: sally
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: db
     ports:
       - "3000:3000"
     #allow access to host pc's file systems
     volumes:
       - ./:/usr/src/smart-brain-api
+  
+  # Postgres
+  db:
+    #restart: always
+    #build using our root/postgres folder's Dockerfile
+    build: ./postgres
+    #use the postgres image available on docker hub
+    #image: postgres
+    environment:
+      POSTGRES_USER: sally
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: postgres
+    ports:
+      - "5433:5432"

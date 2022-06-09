@@ -40,3 +40,9 @@ docker-compose up --build
 docker-compose up -d
 //enter the background running container
 docker-compose exec smart-brain-api bash
+//bring down all docker services
+docker-compose down
+
+//run command prompt and type the following
+psql postgres://sally:secret@localhost:5432/smart-brain-docker
+password password
