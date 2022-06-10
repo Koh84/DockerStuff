@@ -1,6 +1,21 @@
-version: '3.9'
+version: '3.8'
 
 services: 
+  # Postgres
+  postgres:
+    container_name: postgres
+    #build using our root/postgres folder's Dockerfile
+    build: ./postgres
+    #use the postgres image available on docker hub
+    #image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_URL: postgres://admin:password@localhost:5432/smart-brain
+      POSTGRES_DB: smart-brain
+      POSTGRES_HOST: postgres
+    ports:
+      - 5432:5432
 
   # Backend API
   smart-brain-api:
@@ -13,27 +28,14 @@ services:
     command: npm start
     working_dir: /usr/src/smart-brain-api
     environment:
-      POSTGRES_URI: psql postgres://sally:secret@db:5432/smart-brain-docker
+      POSTGRES_URI: postgres://admin:password@postgres:5432/smart-brain
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: smart-brain-docker
-      POSTGRES_HOST: db
+      POSTGRES_HOST: postgres
     ports:
       - "3000:3000"
     #allow access to host pc's file systems
     volumes:
       - ./:/usr/src/smart-brain-api
   
-  # Postgres
-  db:
-    #restart: always
-    #build using our root/postgres folder's Dockerfile
-    build: ./postgres
-    #use the postgres image available on docker hub
-    #image: postgres
-    environment:
-      POSTGRES_USER: sally
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: smart-brain-docker
-      POSTGRES_HOST: postgres
-    ports:
-      - "5433:5432"
+  

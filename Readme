@@ -44,4 +44,8 @@ docker-compose exec smart-brain-api bash
 docker-compose down
 
 //run command prompt and type the following
+//remember to shut down the postgres server running on host pc
+//info https://tableplus.com/blog/2018/10/how-to-start-stop-restart-postgresql-server.html
+pg_ctl -D "C:\Program Files\PostgreSQL\14\data" stop
 psql postgres://sally:secret@localhost:5433/smart-brain-docker
+psql postgres://admin:password@localhost:5432/smart-brain
