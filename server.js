@@ -10,14 +10,6 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const morgan = require('morgan');
 
-// const db = knex({
-//     client: 'pg',
-//     connection: {
-//       connectionString: process.env.DATABASE_URL,
-//       ssl: { rejectUnauthorized: false },
-//     },
-// });
-console.log(process.env.POSTGRES_USER);
 const db = knex({
   client: 'pg',
   connection: process.env.POSTGRES_URI
