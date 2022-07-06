@@ -49,3 +49,8 @@ docker-compose down
 pg_ctl -D "C:\Program Files\PostgreSQL\14\data" stop
 psql postgres://sally:secret@localhost:5433/smart-brain-docker
 psql postgres://admin:password@localhost:5432/smart-brain
+
+
+//redis command
+//to access redis that is running inside docker container
+docker-compose exec radis redis-cli
