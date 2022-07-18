@@ -17,6 +17,13 @@ services:
     ports:
       - 5432:5432
 
+  # Redis
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "6379:6379"
+
   # Backend API
   smart-brain-api:
     container_name: backend
@@ -33,9 +40,9 @@ services:
       POSTGRES_DB: smart-brain-docker
       POSTGRES_HOST: postgres
       REDIS_URI: redis://redis:6379
-    links:
-      - postgres
-      - redis
+    #links:
+    #  - postgres
+    #  - redis
     ports:
       - "3000:3000"
     #allow access to host pc's file systems
@@ -43,11 +50,5 @@ services:
       - ./:/usr/src/smart-brain-api
 
 
-  # Redis
-  redis:
-    container_name: redis
-    image: redis
-    ports:
-      - "6379:6379"
   
   

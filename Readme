@@ -54,3 +54,6 @@ psql postgres://admin:password@localhost:5432/smart-brain
 //redis command
 //to access redis that is running inside docker container
 docker-compose exec radis redis-cli
+
+//stop redis service on ubuntu
+sudo service redis-server stop
